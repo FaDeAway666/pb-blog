@@ -6,7 +6,7 @@ export default function Nav(props) {
   return (
     <div className="flex">
       {data.map(item => (
-        <Link className="mr-8 last:mr-0" href="/">
+        <Link key={item.name} className="mr-8 last:mr-0" href="/">
           {item.label}
         </Link>
       ))}
