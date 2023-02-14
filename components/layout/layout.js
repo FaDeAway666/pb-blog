@@ -3,6 +3,9 @@ import Footer from './footer'
 import Header from './header'
 
 export default function Layout({ children }) {
+  const handleSelect = ({ selectedItem }) => {
+    console.log(selectedItem, 'selected------')
+  }
   return (
     <>
       <Header />
@@ -13,6 +16,7 @@ export default function Layout({ children }) {
               { id: '1', label: 'aa' },
               { id: '2', label: 'bb', children: [{ id: '2-1', label: 'bb1' }] }
             ]}
+            onSelect={handleSelect}
           />
         </div>
         <main className="max-w-screen-lg bg-white mx-72 min-h-[calc(100vh-9rem)]">{children}</main>
