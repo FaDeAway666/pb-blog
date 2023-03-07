@@ -12,8 +12,8 @@
     "node": true,
     "commonjs": true
   },
-  "extends": ["plugin:react/recommended", "prettier", "eslint:recommended", "next"],
-  "plugins": ["react", "prettier", "next", "react-hooks"],
+  "extends": ["plugin:react/recommended", "eslint:recommended", "prettier"],
+  "plugins": ["react", "react-hooks", "prettier"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "warn"

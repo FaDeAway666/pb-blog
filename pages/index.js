@@ -1,3 +1,4 @@
+import Login from '@/components/login'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -12,6 +13,7 @@ export default function Home() {
       </Head>
       <div>
         <Link href="/about">about</Link>
+        <Login />
       </div>
     </>
   )
