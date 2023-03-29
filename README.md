@@ -2,6 +2,8 @@
 
 blog powerd by Next.js
 
+markdown 编辑/阅读器使用 [milkdown](https://milkdown.dev/docs/guide/why-milkdown)
+
 ## 一期
 
 需求：
