@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --color-bg-base: #fff;
+  }
+}
+.theme-dark {
+  --color-bg-base: 17, 24, 39;
+}
 * {
   box-sizing: border-box;
   padding: 0;

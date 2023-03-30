@@ -1,10 +1,10 @@
 import { login } from 'api/auth'
-import { useState } from 'react'
+import { useState, memo } from 'react'
 
 const FORM_ITEM_STYLE = 'mb-2'
 const FORM_INPUT_STYLE = 'bg-white border'
 
-export default function Login() {
+function Login() {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   console.log(userName, password)
@@ -36,3 +36,5 @@ export default function Login() {
     </>
   )
 }
+
+export default memo(Login)

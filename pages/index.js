@@ -2,7 +2,18 @@ import Login from '@/components/login'
 import Head from 'next/head'
 import Link from 'next/link'
 
+const THEME_LIST = ['dark']
 export default function Home() {
+  const changeTheme = theme => {
+    const classList = document.documentElement.classList
+    // 移除所有已经设置在classList中的theme
+    console.log(classList, 'classlist')
+    THEME_LIST.forEach(item => {
+      classList.remove(`theme-${item}`)
+    })
+    if (theme) classList.add(`theme-${theme}`)
+  }
+
   return (
     <>
       <Head>
@@ -14,6 +25,9 @@ export default function Home() {
       <div>
         <Link href="/about">about</Link>
         <Login />
+        <div className="bg-skin-base w-200 h-20 border">test theme block</div>
+        <button onClick={() => changeTheme()}>默认主题</button>
+        <button onClick={() => changeTheme('dark')}>深色主题</button>
       </div>
     </>
   )
