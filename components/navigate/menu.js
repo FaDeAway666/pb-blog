@@ -70,7 +70,7 @@ Menu.propTypes = {
   level: PropTypes.number
 }
 
-export default props => {
+const MenuWrapper = props => {
   const { data, onSelect } = props
 
   const [current, setCurrent] = useState(null)
@@ -91,3 +91,5 @@ export default props => {
     </MenuContext.Provider>
   )
 }
+
+export default MenuWrapper

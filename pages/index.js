@@ -1,6 +1,9 @@
 import Login from '@/components/login'
 import Head from 'next/head'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
+
+const Markdown = dynamic(() => import('../components/markdown/index'), { ssr: false })
 
 const THEME_LIST = ['dark']
 export default function Home() {
@@ -29,6 +32,7 @@ export default function Home() {
         <button onClick={() => changeTheme()}>默认主题</button>
         <button onClick={() => changeTheme('dark')}>深色主题</button>
       </div>
+      <Markdown />
     </>
   )
 }
