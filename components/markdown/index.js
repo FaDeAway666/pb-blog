@@ -22,10 +22,11 @@ const hooks = {
     reader.readAsDataURL(blob)
   }
 }
+const initContent = `<div>aaa</div><h1>title</h1>`
 
 const Markdown = () => (
   <Editor
-    initialValue="hello react editor world!"
+    initialValue={initContent}
     previewStyle="vertical"
     height="600px"
     hooks={hooks}

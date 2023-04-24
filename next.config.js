@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  distDir: 'build',
   webpack(config) {
     config.plugins.push(
       require('unplugin-icons/webpack')({

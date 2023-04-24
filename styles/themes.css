@@ -1,0 +1,23 @@
+:root {
+  --color-bg-base: #fff;
+  --color-text-base: #0f172a;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #9ca3af;
+  --color-text-base-hover: #1f2937;
+}
+
+.theme-dark {
+  --color-bg-base: 17, 24, 39;
+  --color-text-base: #fff;
+  --color-text-secondary: #9ca3af;
+  --color-text-tertiary: #6b7280;
+  --color-text-base-hover: #e5e7eb;
+}
+
+.theme-green {
+  --color-bg-base: #067828;
+  --color-text-base: #0f172a;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #9ca3af;
+  --color-text-base-hover: #1f2937;
+}

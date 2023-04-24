@@ -28,7 +28,9 @@ export default function Home() {
       <div>
         <Link href="/about">about</Link>
         <Login />
-        <div className="bg-skin-base w-200 h-20 border">test theme block</div>
+        <div className="bg-skin-base text-skin-base w-200 h-20 border">
+          <span className="text-skin-base">test theme block</span>
+        </div>
         <button onClick={() => changeTheme()}>默认主题</button>
         <button onClick={() => changeTheme('dark')}>深色主题</button>
       </div>

@@ -20,6 +20,11 @@ module.exports = {
         skin: {
           base: withOpacityValue('--color-bg-base')
         }
+      },
+      textColor: {
+        skin: {
+          base: 'var(--color-text-base)'
+        }
       }
     }
   },
