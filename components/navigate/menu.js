@@ -92,4 +92,9 @@ const MenuWrapper = props => {
   )
 }
 
+MenuWrapper.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
+  onSelect: PropTypes.func
+}
+
 export default MenuWrapper
