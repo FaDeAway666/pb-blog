@@ -2,6 +2,7 @@ import Login from '@/components/login'
 import Head from 'next/head'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import ArticleListContainer from '@/components/list'
 
 const Markdown = dynamic(() => import('../components/markdown/index'), { ssr: false })
 
@@ -35,6 +36,7 @@ export default function Home() {
         <button onClick={() => changeTheme('dark')}>深色主题</button>
       </div>
       <Markdown />
+      <ArticleListContainer title={<span className="text-2xl bold">title</span>}></ArticleListContainer>
     </>
   )
 }

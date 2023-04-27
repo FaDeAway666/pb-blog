@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 
 const BtnClassLists = {
   base: 'border border-solid border-gray-300 px-4 py-1 rounded',
-  text: '',
+  text: 'border-none',
   default: ''
 }
 

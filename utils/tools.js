@@ -12,3 +12,15 @@ export const debounce = (fn, delay) => {
     }, delay)
   }
 }
+
+export const throttle = (fn, inter) => {
+  let timer = null
+  return function () {
+    if (!timer) {
+      timer = setTimeout(() => {
+        fn.apply(this, arguments)
+        timer = null
+      }, inter)
+    }
+  }
+}
