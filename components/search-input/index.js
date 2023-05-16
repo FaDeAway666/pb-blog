@@ -5,15 +5,24 @@ import { debounce } from 'utils/tools'
 
 const SearchListItem = ({ data }) => {
   return (
-    <li className="mb-2 rounded border-bottom">
-      <p>{data.title}</p>
+    <li className="mb-2 px-4 py-2 rounded border-bottom cursor-pointer hover:bg-slate-100 last:mb-0">
+      <p className="leading-8 text-base">{data.title}</p>
       <div className="flex justify-between items-center">
-        <span>{data.category[data.category.length - 1].name}</span>
-        <span>
-          {data.tags.map(item => (
-            <span key={item}>{item}</span>
+        <div className="text-sm font-serif text-slate-400">
+          {data.category.map((item, index) => (
+            <>
+              <span key={item.id}>{item.name}</span>
+              {index < data.category.length - 1 ? <span> / </span> : null}
+            </>
           ))}
-        </span>
+        </div>
+        <div className="text-xs font-serif flex">
+          <span className="block ml-4 border border-orange-400 px-2 py-1 text-orange-400">
+            {data.tags.map(item => (
+              <span key={item}>{item}</span>
+            ))}
+          </span>
+        </div>
       </div>
     </li>
   )
@@ -40,7 +49,15 @@ const SearchInput = ({ value, onInput }) => {
     console.log('change', value)
     if (value)
       setDataList([
-        { title: 'aaa', tags: ['tag'], category: [{ id: 'aa', name: '分类1' }], id: '123' },
+        {
+          title: 'aaa',
+          tags: ['tag'],
+          category: [
+            { id: 'aa', name: '分类1' },
+            { id: 'aa1', name: '分类1的子' }
+          ],
+          id: '123'
+        },
         { title: 'bbb', tags: ['tag'], category: [{ id: 'aa', name: '分类1' }], id: '444' }
       ])
     else setDataList([])
@@ -63,7 +80,7 @@ const SearchInput = ({ value, onInput }) => {
           onInput={handleInput}
         ></input>
       </div>
-      <ul style={{ width: '600px' }} className="mt-2 px-4 rounded bg-white">
+      <ul style={{ width: '600px' }} className="mt-2 rounded bg-white max-h-80">
         {dataList.map(item => {
           return <SearchListItem key={item.id} data={item} />
         })}
