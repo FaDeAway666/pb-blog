@@ -54,7 +54,6 @@ export default function Nav(props) {
     // 首次加载时，判断是否需要出现下拉菜单
     let index = childOutsideParentIndex(menuWidths)
     setExpandIndex(index)
-    setDropdownItems(buildDropdownItems(data.slice(index)))
 
     const handleResize = debounce(() => {
       let index = childOutsideParentIndex(menuWidths)
@@ -67,6 +66,11 @@ export default function Nav(props) {
       window.removeEventListener('resize', handleResize)
     }
   }, [data])
+
+  useEffect(() => {
+    setDropdownItems(buildDropdownItems(data.slice(expandIndex)))
+  }, [data, expandIndex])
+
   return (
     <div ref={navRef} className="flex flex-auto px-12">
       {data.slice(0, expandIndex > -1 ? expandIndex : data.length).map(item => (

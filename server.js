@@ -12,6 +12,14 @@ const handle = app.getRequestHandler()
 
 // 代理配置表，这里和一般的 webpack 配置是一样的。
 const proxyTable = {
+  // 一言proxy
+  // '/api/sentence': {
+  //   target: 'https://v1.hitokoto.cn',
+  //   pathRewrite: {
+  //     '^/api/sentence': ''
+  //   },
+  //   changeOrigin: true
+  // },
   '/api': {
     target: 'http://localhost:3001',
     pathRewrite: {

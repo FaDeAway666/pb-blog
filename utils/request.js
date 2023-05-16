@@ -4,7 +4,6 @@ let instance
 function createAxiosInstance() {
   if (instance) return instance
 
-  console.log(process.env.NEXT_PUBLIC_BASE_URL, 'base url')
   instance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BASE_URL,
     timeout: 5000,
@@ -35,8 +34,6 @@ function createAxiosInstance() {
       console.log(err)
     }
   )
-
-  console.log(instance)
 
   return instance
 }
