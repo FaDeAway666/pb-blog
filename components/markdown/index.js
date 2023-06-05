@@ -4,6 +4,7 @@ import '@toast-ui/editor-plugin-color-syntax/dist/toastui-editor-plugin-color-sy
 import 'prismjs/themes/prism.css'
 import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight.css'
 
+import { useRef } from 'react'
 import { Editor } from '@toast-ui/react-editor'
 import codeSyntaxHighlightPlugin from '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight-all.js'
 
@@ -24,16 +25,27 @@ const hooks = {
 }
 const initContent = `<div>aaa</div><h1>title</h1>`
 
-const Markdown = () => (
-  <Editor
-    initialValue={initContent}
-    previewStyle="vertical"
-    height="600px"
-    hooks={hooks}
-    plugins={plugins}
-    initialEditType="markdown"
-    useCommandShortcut={true}
-  />
-)
+const Markdown = () => {
+  const editor = useRef(null)
+
+  const getValue = () => {
+    console.log(editor.current.getInstance().getMarkdown())
+  }
+  return (
+    <>
+      <Editor
+        ref={editor}
+        initialValue={initContent}
+        previewStyle="vertical"
+        height="600px"
+        hooks={hooks}
+        plugins={plugins}
+        initialEditType="markdown"
+        useCommandShortcut={true}
+      />
+      <button onClick={getValue}>getValue</button>
+    </>
+  )
+}
 
 export default Markdown
