@@ -19,7 +19,10 @@ const Mask = props => {
       onClick={hanldeMaskClick}
     >
       {/* <div className="absolute inset-0 bg-black opacity-50"></div> */}
-      <div style={{ top: '15vh' }} className="absolute inset-x-1/2 flex items-center justify-center">
+      <div
+        style={{ top: '15vh', left: '50%', transform: 'translateX(-50%)' }}
+        className="absolute flex items-center justify-center"
+      >
         {children}
       </div>
     </div>,

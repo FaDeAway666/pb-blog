@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import SearchOutlined from '~icons/ant-design/search-outlined.jsx'
 import Menu from '@/components/navigate/menu'
+import ArticleDialog from '@/components/form/article'
 
 const menuData = [
   { id: '1', label: 'sdf' },
@@ -7,19 +9,27 @@ const menuData = [
 ]
 
 const AdminLayout = ({ children }) => {
+  const [visible, setVisible] = useState(false)
+  const handleClose = () => {
+    setVisible(false)
+  }
+
   return (
-    <div className="flex py-10" style={{ minWidth: 1200 }}>
-      <section className="left w-96 px-10 py-12h-full">
-        <div className="flex items-center mb-4" role="button">
-          <SearchOutlined />
-          <span>写文章</span>
-        </div>
-        <div>
-          <Menu data={menuData}></Menu>
-        </div>
-      </section>
-      <section className="flex-1 px-10">{children}</section>
-    </div>
+    <>
+      <div className="flex py-10" style={{ minWidth: 1200 }}>
+        <section className="left w-96 px-10 py-12h-full">
+          <div className="flex items-center mb-4" role="button" onClick={() => setVisible(true)}>
+            <SearchOutlined />
+            <span>写文章</span>
+          </div>
+          <div>
+            <Menu data={menuData}></Menu>
+          </div>
+        </section>
+        <section className="flex-1 px-10">{children}</section>
+      </div>
+      <ArticleDialog visible={visible} onClose={handleClose}></ArticleDialog>
+    </>
   )
 }
 

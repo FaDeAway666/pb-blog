@@ -9,7 +9,11 @@ const BtnClassLists = {
 const Button = props => {
   const { type, children, htmlType } = props
   return (
-    <button type={htmlType || 'button'} className={`${BtnClassLists.base} ${BtnClassLists[type || 'default']}`}>
+    <button
+      {...props}
+      type={htmlType || 'button'}
+      className={`${BtnClassLists.base} ${BtnClassLists[type || 'default']}`}
+    >
       {children}
     </button>
   )
