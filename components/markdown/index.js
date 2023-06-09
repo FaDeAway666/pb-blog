@@ -6,6 +6,7 @@ import '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin
 
 import { useRef } from 'react'
 import { Editor } from '@toast-ui/react-editor'
+import PropTypes from 'prop-types'
 import codeSyntaxHighlightPlugin from '@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight-all.js'
 
 import colorPlugin from '@toast-ui/editor-plugin-color-syntax'
@@ -25,12 +26,13 @@ const hooks = {
 }
 const initContent = `<div>aaa</div><h1>title</h1>`
 
-const Markdown = () => {
+const Markdown = props => {
   const editor = useRef(null)
 
   const getValue = () => {
     console.log(editor.current.getInstance().getMarkdown())
   }
+  const { options } = props
   return (
     <>
       <Editor
@@ -42,10 +44,15 @@ const Markdown = () => {
         plugins={plugins}
         initialEditType="markdown"
         useCommandShortcut={true}
+        {...options}
       />
       <button onClick={getValue}>getValue</button>
     </>
   )
+}
+
+Markdown.propTypes = {
+  options: PropTypes.object
 }
 
 export default Markdown

@@ -1,4 +1,3 @@
-import Login from '@/components/login'
 import Head from 'next/head'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
@@ -28,7 +27,6 @@ export default function Home() {
       </Head>
       <div>
         <Link href="/about">about</Link>
-        <Login />
         <div className="bg-skin-base text-skin-base w-200 h-20 border">
           <span className="text-skin-base">test theme block</span>
         </div>

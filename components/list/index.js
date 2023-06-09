@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useReducer } from 'react'
 import PropTypes from 'prop-types'
 import { Pagination } from 'antd'
 import ListItem from './item'
 import ListHeader from './header'
+import style from './style.module.scss'
 
 const ArticleList = ({ list }) => {
   return (
@@ -18,33 +19,64 @@ ArticleList.propTypes = {
   list: PropTypes.array
 }
 
-const ArticleListContainer = ({ title, query }) => {
+const initPagination = {
+  page: 1,
+  pageSize: 10,
+  total: 100
+}
+
+function paginationReducer(state, action) {
+  switch (action.type) {
+    case 'change':
+      return {
+        ...state,
+        ...action.payload
+      }
+    case 'total':
+      return {
+        ...state,
+        total: action.payload
+      }
+    default:
+      throw new Error()
+  }
+}
+
+const ArticleListContainer = ({ title, query, fetch }) => {
   const [list, setList] = useState([])
-  const [page, setPage] = useState(1)
-  const [total, setTotal] = useState(0)
+  const [pagination, dispatchPagination] = useReducer(paginationReducer, initPagination)
+  console.log(pagination, 'pagination')
 
   useEffect(() => {
     // fetch mock
+    // fetch() get list
     setList([
       { title: 'aaa', tags: ['tag'], category: [{ id: 'aa', name: '分类1' }], id: '123', updateTime: '2023-04-01' },
       { title: 'bbb', tags: ['tag'], category: [{ id: 'aa', name: '分类1' }], id: '444' }
     ])
   }, [query])
 
+  const handlePageChange = (page, pageSize) => {
+    dispatchPagination({ type: 'change', payload: { page, pageSize } })
+  }
+
   return (
     <>
-      <ListHeader>{title}</ListHeader>
+      {title ? <ListHeader>{title}</ListHeader> : null}
       <div className="w-3/4 my-32 flex justify-center">
         <ArticleList list={list}></ArticleList>
       </div>
-      <Pagination defaultCurrent={page} total={total}></Pagination>
+      <div className={style.pagination}>
+        <Pagination defaultCurrent={pagination.page} total={pagination.total} onChange={handlePageChange}></Pagination>
+      </div>
     </>
   )
 }
 
 ArticleListContainer.propTypes = {
   title: PropTypes.node,
-  query: PropTypes.object
+  query: PropTypes.object,
+  fetch: PropTypes.func
 }
 
 export default ArticleListContainer
