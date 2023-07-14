@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import Nav from '../navigate/nav'
 import Button from '../button'
 import SearchInput from '../search-input'
+import LoginDialog from '../form/login'
 
 const Mask = dynamic(() => import('../mask'), { ssr: false })
 
@@ -16,6 +17,7 @@ export default function Header() {
   ]
 
   const [visible, setVisible] = useState(false)
+  const [loginVisible, setLoginVisible] = useState(false)
   const [searchValue, setSearchValue] = useState('')
 
   const handleSearchClick = () => {
@@ -25,6 +27,9 @@ export default function Header() {
     setVisible(false)
     setSearchValue('')
   }
+  const handleLoginClose = () => {
+    setLoginVisible(false)
+  }
 
   return (
     <>
@@ -33,12 +38,15 @@ export default function Header() {
         <Nav data={navData} />
         <div className="flex items-center">
           <SearchOutlined className="text-xl shrink-0 cursor-pointer mr-4" onClick={handleSearchClick} />
-          <Button type="text">登录</Button>
+          <Button onClick={() => setLoginVisible(true)} type="text">
+            登录
+          </Button>
         </div>
       </header>
       <Mask visible={visible} onClose={handleMaskClose}>
         <SearchInput value={searchValue} onInput={val => setSearchValue(val)} />
       </Mask>
+      <LoginDialog visible={loginVisible} onClose={handleLoginClose} />
     </>
   )
 }
