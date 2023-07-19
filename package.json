@@ -21,10 +21,10 @@
     "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-markdown": "^8.0.7"
+    "react-markdown": "^8.0.7",
+    "@iconify-json/ant-design": "^1.1.4"
   },
   "devDependencies": {
-    "@iconify-json/ant-design": "^1.1.4",
     "@svgr/core": "^6.5.1",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.30.0",

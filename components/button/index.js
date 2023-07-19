@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
 
 const BtnClassLists = {
-  base: 'border border-solid border-gray-300 px-4 py-1 rounded',
+  base: 'px-4 py-1 rounded',
   text: 'border-none',
-  default: ''
+  primary: 'bg-blue-500 text-white hover:bg-blue-600',
+  default: 'border border-solid border-gray-300'
 }
 
 const Button = props => {
@@ -20,7 +21,7 @@ const Button = props => {
 }
 
 Button.propTypes = {
-  type: PropTypes.oneOf(['primary', 'default', 'dashed', 'text', 'link']),
+  type: PropTypes.oneOf(['primary', 'default', 'outline', 'text', 'link']),
   children: PropTypes.node.isRequired,
   htmlType: PropTypes.oneOf(['button', 'submit', 'reset'])
 }

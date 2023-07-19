@@ -6,17 +6,18 @@ import ArticleListContainer from '@/components/list'
 const Markdown = dynamic(() => import('../components/markdown/index'), { ssr: false })
 
 const THEME_LIST = ['dark']
-export default function Home() {
-  const changeTheme = theme => {
-    const classList = document.documentElement.classList
-    // 移除所有已经设置在classList中的theme
-    console.log(classList, 'classlist')
-    THEME_LIST.forEach(item => {
-      classList.remove(`theme-${item}`)
-    })
-    if (theme) classList.add(`theme-${theme}`)
-  }
 
+const changeTheme = theme => {
+  const classList = document.documentElement.classList
+  // 移除所有已经设置在classList中的theme
+  console.log(classList, 'classlist')
+  THEME_LIST.forEach(item => {
+    classList.remove(`theme-${item}`)
+  })
+  if (theme) classList.add(`theme-${theme}`)
+}
+
+export default function Home() {
   return (
     <>
       <Head>

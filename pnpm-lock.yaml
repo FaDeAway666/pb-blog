@@ -34,6 +34,7 @@ specifiers:
   unplugin-icons: ^0.15.2
 
 dependencies:
+  '@iconify-json/ant-design': 1.1.5
   '@next/font': 13.1.1
   '@toast-ui/editor': 3.2.2
   '@toast-ui/editor-plugin-code-syntax-highlight': 3.1.0
@@ -49,7 +50,6 @@ dependencies:
   react-markdown: 8.0.7_react@18.2.0
 
 devDependencies:
-  '@iconify-json/ant-design': 1.1.5
   '@svgr/core': 6.5.1
   autoprefixer: 10.4.14_postcss@8.4.21
   eslint: 8.38.0
@@ -420,11 +420,10 @@ packages:
     resolution: {integrity: sha512-lNEC95u9QdmS3GfMLnbAjLZCfQ9i4xURyn7P4UVHa6ejjLjs5FVyi/J+itrmnBpwb36YZo4CT0GDIn2AgvkNng==}
     dependencies:
       '@iconify/types': 2.0.0
-    dev: true
+    dev: false
 
   /@iconify/types/2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
-    dev: true
 
   /@iconify/utils/2.1.5:
     resolution: {integrity: sha512-6MvDI+I6QMvXn5rK9KQGdpEE4mmLTcuQdLZEiX5N+uZB+vc4Yw9K1OtnOgkl8mp4d9X0UrILREyZgF1NUwUt+Q==}

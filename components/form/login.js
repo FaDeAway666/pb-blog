@@ -1,22 +1,33 @@
 import PropTypes from 'prop-types'
 import { Form, Input } from 'antd'
 import dynamic from 'next/dynamic'
+import { useContext } from 'react'
+import { GlobalContext } from '../../pages/_app'
 import Button from '../button'
+import { login } from 'api/auth'
+import { setStorage } from 'utils/tools'
 
-const Mask = dynamic(() => import('../mask'), { ssr: false })
+const Dialog = dynamic(() => import('../mask/dialog'), { ssr: false })
 
 const LoginDialog = props => {
   const [form] = Form.useForm()
+  const { user, setUser } = useContext(GlobalContext)
 
   const handleConfirm = () => {
+    console.log('handleConfirm', form)
     form.validateFields().then(values => {
       console.log(values)
-      props.onConfirm?.(values)
+      login(values).then(res => {
+        console.log(res, user, setUser, 'login')
+        setUser(res)
+        setStorage('user', res)
+        props.onClose()
+      })
     })
   }
   return (
-    <Mask visible={props.visible} onClose={props.onClose}>
-      <div className="article-dialog-wrapper px-20 py-10 bg-white radius-10" style={{ width: 600 }}>
+    <Dialog title="登录" visible={props.visible} onClose={props.onClose}>
+      <div className="article-dialog-wrapper radius-10" style={{ width: 600 }}>
         <Form
           layout={{
             wrapperCol: { span: 16 },
@@ -24,7 +35,7 @@ const LoginDialog = props => {
           }}
           form={form}
         >
-          <Form.Item name="username" label="用户名" rules={[{ required: true }]}>
+          <Form.Item name="userName" label="用户名" rules={[{ required: true }]}>
             <Input />
           </Form.Item>
           <Form.Item name="password" label="密码" rules={[{ required: true }]}>
@@ -40,14 +51,13 @@ const LoginDialog = props => {
           </Form.Item>
         </Form>
       </div>
-    </Mask>
+    </Dialog>
   )
 }
 
 LoginDialog.propTypes = {
   visible: PropTypes.bool,
-  onClose: PropTypes.func,
-  onConfirm: PropTypes.func
+  onClose: PropTypes.func
 }
 
 export default LoginDialog

@@ -1,10 +1,13 @@
-import { useState } from 'react'
-import SearchOutlined from '~icons/ant-design/search-outlined.jsx'
+import { useState, useContext } from 'react'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
+import SearchOutlined from '~icons/ant-design/search-outlined.jsx'
 import Nav from '../navigate/nav'
 import Button from '../button'
 import SearchInput from '../search-input'
 import LoginDialog from '../form/login'
+import { GlobalContext } from '../../pages/_app'
+import { getStorage } from 'utils/tools'
 
 const Mask = dynamic(() => import('../mask'), { ssr: false })
 
@@ -19,6 +22,10 @@ export default function Header() {
   const [visible, setVisible] = useState(false)
   const [loginVisible, setLoginVisible] = useState(false)
   const [searchValue, setSearchValue] = useState('')
+  const { user, setUser } = useContext(GlobalContext)
+
+  const storage = getStorage('user')
+  if (storage) setUser(storage)
 
   const handleSearchClick = () => {
     setVisible(true)
@@ -38,9 +45,16 @@ export default function Header() {
         <Nav data={navData} />
         <div className="flex items-center">
           <SearchOutlined className="text-xl shrink-0 cursor-pointer mr-4" onClick={handleSearchClick} />
-          <Button onClick={() => setLoginVisible(true)} type="text">
-            登录
-          </Button>
+
+          {user ? (
+            <Link className="ml-4" href="/admin">
+              {user.userName}
+            </Link>
+          ) : (
+            <Button onClick={() => setLoginVisible(true)} type="text">
+              登录
+            </Button>
+          )}
         </div>
       </header>
       <Mask visible={visible} onClose={handleMaskClose}>
