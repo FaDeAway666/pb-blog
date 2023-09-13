@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useContext, useState } from 'react'
-import IconArrowRight from '~icons/ant-design/right-outlined.jsx'
+import { AiOutlineArrowRight } from 'react-icons/ai'
 
 const COLLAPSE_STYLE = 'overflow-hidden h-8'
 const SELECTED_STYLE = 'font-bold bg-gray-200'
@@ -39,7 +39,7 @@ function Menu(props) {
           return (
             <li key={item.id} className={`leading-8 mb-1 ${!expand ? COLLAPSE_STYLE : ''}`}>
               <div className={`relative rounded px-6 hover:bg-gray-200`} onClick={() => setExpand(!expand)}>
-                <IconArrowRight
+                <AiOutlineArrowRight
                   className={`absolute left-0 top-1.5 transition-transform ${expand ? 'rotate-90' : 'rotate-0'}`}
                 />
                 <span className={`pl-${lv * 6} `}>{item.label}</span>

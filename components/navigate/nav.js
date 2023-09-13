@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Dropdown } from 'antd'
 import PropTypes from 'prop-types'
-import MoreOutlined from '~icons/ant-design/more-outlined.jsx'
+import { AiOutlineMore } from 'react-icons/ai'
 import Link from 'next/link'
 import { debounce } from 'utils/tools'
 
@@ -80,7 +80,7 @@ export default function Nav(props) {
       ))}
       {expandIndex > -1 ? (
         <Dropdown menu={{ items: dropdownItems }}>
-          <MoreOutlined className="text-xl rotate-90 cursor-pointer" />
+          <AiOutlineMore className="text-xl rotate-90 cursor-pointer" />
         </Dropdown>
       ) : null}
     </div>

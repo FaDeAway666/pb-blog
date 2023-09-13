@@ -1,5 +1,5 @@
-import SearchOutlined from '~icons/ant-design/search-outlined.jsx'
 import { useEffect, useState } from 'react'
+import { AiOutlineSearch } from 'react-icons/ai'
 import PropTypes from 'prop-types'
 import { debounce } from 'utils/tools'
 
@@ -69,7 +69,7 @@ const SearchInput = ({ value, onInput }) => {
           focus ? 'outline-2 outline-slate-500' : 'outline-0'
         }`}
       >
-        <SearchOutlined className="text-xl shrink-0 mr-4" />
+        <AiOutlineSearch className="text-xl shrink-0 mr-4" />
         <input
           style={{ width: '500px' }}
           className="w-96 h-full outline-0"

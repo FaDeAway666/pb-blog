@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import CloseIcon from '~icons/ant-design/close-outlined.jsx'
+import { AiOutlineClose } from 'react-icons/ai'
 import Mask from './index.js'
 
 const Dialog = props => {
@@ -10,7 +10,7 @@ const Dialog = props => {
         {/* header */}
         <div className="h-12 px-8 leading-12 flex justify-between items-center">
           <div className="text-lg font-medium">{title}</div>
-          <CloseIcon className="cursor-pointer" onClick={onClose} />
+          <AiOutlineClose className="cursor-pointer" onClick={onClose} />
         </div>
         <div className="px-8 py-4">{children}</div>
       </div>
