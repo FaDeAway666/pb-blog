@@ -1,16 +1,16 @@
 import AdminLayout from './_layout'
 import List from '@/components/list'
 
-const PageUser = () => {
+const PageAdmin = () => {
   return (
     <AdminLayout>
       <div>文章列表</div>
       <div>tab</div>
       <div className="overflow-y-auto max-h-[calc(100vh-12rem)]">
-        <List></List>
+        <List target="/admin/edit"></List>
       </div>
     </AdminLayout>
   )
 }
 
-export default PageUser
+export default PageAdmin

@@ -17,12 +17,15 @@ const LoginDialog = props => {
     console.log('handleConfirm', form)
     form.validateFields().then(values => {
       console.log(values)
-      login(values).then(res => {
-        console.log(res, user, setUser, 'login')
-        setUser(res)
-        setStorage('user', res)
-        props.onClose()
-      })
+      setUser(values)
+      setStorage('user', values)
+      props.onClose()
+      // login(values).then(res => {
+      //   console.log(res, user, setUser, 'login')
+      //   setUser(res)
+      //   setStorage('user', res)
+      //   props.onClose()
+      // })
     })
   }
   return (

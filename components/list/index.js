@@ -5,18 +5,19 @@ import ListItem from './item'
 import ListHeader from './header'
 import style from './style.module.scss'
 
-const ArticleList = ({ list }) => {
+const ArticleList = ({ list, target }) => {
   return (
     <ul className="w-4/5">
       {list.map(item => {
-        return <ListItem key={item.id} data={item}></ListItem>
+        return <ListItem key={item.id} data={item} target={target}></ListItem>
       })}
     </ul>
   )
 }
 
 ArticleList.propTypes = {
-  list: PropTypes.array
+  list: PropTypes.array,
+  target: PropTypes.string
 }
 
 const initPagination = {
@@ -42,7 +43,7 @@ function paginationReducer(state, action) {
   }
 }
 
-const ArticleListContainer = ({ title, query, fetch }) => {
+const ArticleListContainer = ({ title, query, fetch, target }) => {
   const [list, setList] = useState([])
   const [pagination, dispatchPagination] = useReducer(paginationReducer, initPagination)
   console.log(pagination, 'pagination')
@@ -64,7 +65,7 @@ const ArticleListContainer = ({ title, query, fetch }) => {
     <>
       {title ? <ListHeader>{title}</ListHeader> : null}
       <div className="w-3/4 my-32 flex justify-center">
-        <ArticleList list={list}></ArticleList>
+        <ArticleList list={list} target={target}></ArticleList>
       </div>
       <div className={style.pagination}>
         <Pagination defaultCurrent={pagination.page} total={pagination.total} onChange={handlePageChange}></Pagination>
@@ -76,7 +77,8 @@ const ArticleListContainer = ({ title, query, fetch }) => {
 ArticleListContainer.propTypes = {
   title: PropTypes.node,
   query: PropTypes.object,
-  fetch: PropTypes.func
+  fetch: PropTypes.func,
+  target: PropTypes.string
 }
 
 export default ArticleListContainer

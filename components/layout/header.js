@@ -38,7 +38,7 @@ export default function Header() {
   useEffect(() => {
     const storage = getStorage('user')
     if (storage) setUser(storage)
-  })
+  }, [])
 
   return (
     <>
