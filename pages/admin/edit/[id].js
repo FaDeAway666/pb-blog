@@ -7,14 +7,14 @@ const PageEditArticle = () => {
   return (
     <AdminLayout>
       <div className="edit-article-wrapper">
-        <div className="title-header">
+        <div className="flex items-center justify-between mb-4">
           <div className="article-path"> test / test</div>
           <div className="btns">
             <Button>保存</Button>
           </div>
         </div>
         <div className="article-content">
-          <h1>文章标题</h1>
+          <h1 className="text-2xl font-bold mb-4">文章标题</h1>
           <div>
             <Markdown options={{ initialEditType: 'wysiwyg' }} />
           </div>

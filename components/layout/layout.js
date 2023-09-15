@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <div className="relative">
+      <div className="flex items-center justify-center relative">
         {/* <div className="absolute w-64 float-left left-4 top-8">
           <Menu
             data={[
@@ -19,7 +19,7 @@ export default function Layout({ children }) {
             onSelect={handleSelect}
           />
         </div> */}
-        <main className="max-w-screen-lg bg-white min-h-[calc(100vh-9rem)]">{children}</main>
+        <main className="bg-white min-h-[calc(100vh-9rem)]">{children}</main>
       </div>
       <Footer />
     </>
